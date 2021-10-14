@@ -61,7 +61,7 @@ public record MagicSquare(Scanner scan) {
         do {
             System.out.print("Saisir n : ");
             n = scan.nextInt();
-        } while(n < 0);
+        } while(n < 0 || n % 2 == 0);
 
         int[][] matrix = new int[n][n];
         int last = matrix.length - 1;
@@ -73,21 +73,15 @@ public record MagicSquare(Scanner scan) {
         matrix[row][col] = z;
 
         while(z < Math.pow(matrix.length, 2)) {
-            if(row <= 0) {
-                row = last;
-            } else row--;
-            if(col >= last) {
-                col = 0;
-            } else col++;
+            row = row <= 0 ? last : row - 1;
+            col = col >= last ? 0 : col + 1;
 
             if(matrix[row][col] != 0) {
-                col++;
-                continue;
+                for(int i = 0; i < 2; i++) {
+                    row = row >= last ? 0 : row + 1;
+                }
+                col = col <= 0 ? last : col - 1;
             }
-
-            System.out.println("row = " + row);
-            System.out.println("col = " + col);
-
             z++;
             matrix[row][col] = z;
         }
