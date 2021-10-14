@@ -10,13 +10,15 @@ public record MagicSquare(Scanner scan) {
     public MagicSquare(Scanner scan) {
         this.scan = scan;
 
-        for(int[] row : magicSquare(3)) {
+        for(int[] row : magicSquare()) {
             System.out.println(Arrays.toString(row));
         }
         System.out.println();
     }
 
-    public int @NotNull [][] magicSquare(int n) {
+    public int @NotNull [][] magicSquare() {
+        int n;
+
         do {
             System.out.print("Dimensions : ");
             n = scan.nextInt();
@@ -29,10 +31,12 @@ public record MagicSquare(Scanner scan) {
         int z = 1;
 
         Arrays.stream(array).forEach(it -> Arrays.fill(it, 0));
+        System.out.println(Arrays.deepToString(array));
         array[row][col] = z;
 
         for(int i = 0; i < array.length; i++) {
             for(int j = 0; j < array[i].length; j++) {
+                System.out.println("z = " + z);
                 if(i == 0 && j == 0) {
                     z++;
                     array[array.length - 1][array[i].length - 1] = z;

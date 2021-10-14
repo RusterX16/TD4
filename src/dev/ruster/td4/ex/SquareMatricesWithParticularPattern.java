@@ -10,7 +10,7 @@ public record SquareMatricesWithParticularPattern(Scanner scan) {
     public SquareMatricesWithParticularPattern(@NotNull final Scanner scan) {
         this.scan = scan;
 
-        for(int[] row : diagonal()) {
+        for(int[] row : coil()) {
             System.out.println(Arrays.toString(row));
         }
 

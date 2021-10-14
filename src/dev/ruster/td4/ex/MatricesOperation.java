@@ -15,11 +15,12 @@ public record MatricesOperation(Scanner scan) {
                 new int[][]{{1, 4, 9}, {2, -7, 13}, {54, -34, 0}},
                 new int[][]{{3, 4, 86}, {-43, -11, 0}, {23, 23, 34}});
         System.out.println("Add : " + Arrays.deepToString(matrix));
-        System.out.println("Sum : " + sum(new int[][]{
-                {1, 0, 1},
-                {0, 1, 0},
-                {1, 0, 3}
-        }));
+        System.out.println("Sum : " + sumElements(
+                new int[][]{
+                        {1, 0, 1},
+                        {0, 1, 0},
+                        {1, 0, 3}}
+        ));
         System.out.println(nullRow(new int[][]{
                 {0, 0, 1},
                 {1, 1, 1},
@@ -30,6 +31,7 @@ public record MatricesOperation(Scanner scan) {
                 {1, 1, 0},
                 {1, 1, 0}
         }));
+        /*
         System.out.println(Arrays.deepToString(multiply(
                 new int[][]{
                         {1, 2, 3},
@@ -39,9 +41,14 @@ public record MatricesOperation(Scanner scan) {
                         {9, 10},
                         {11, 12}}
         )));
+        */
 
         System.out.println();
     }
+
+    /*
+    Addition de deux matrices
+    */
 
     @Contract(pure = true)
     public int[][] add(int @NotNull [][] matrix_1, int @NotNull [][] matrix_2) {
@@ -53,8 +60,12 @@ public record MatricesOperation(Scanner scan) {
         return matrix_1;
     }
 
+    /*
+    Somme des éléments d'une matrice
+    */
+
     @Contract(pure = true)
-    public int sum(int @NotNull [][] matrix) {
+    public int sumElements(int @NotNull [][] matrix) {
         int sum = 0;
 
         for(int i = 0; i < matrix.length; i++) {
@@ -66,6 +77,10 @@ public record MatricesOperation(Scanner scan) {
         }
         return sum;
     }
+
+    /*
+    Nombres d'éléments nuls d'une matrice
+    */
 
     @Contract(pure = true)
     public int getNullElementsCount(int @NotNull [][] matrix) {
@@ -81,6 +96,10 @@ public record MatricesOperation(Scanner scan) {
         return count;
     }
 
+    /*
+    Element nuls dans une matrice
+    */
+
     public boolean containsNullElement(int @NotNull [][] matrix) {
         boolean contains = false;
 
@@ -94,6 +113,10 @@ public record MatricesOperation(Scanner scan) {
         }
         return contains;
     }
+
+    /*
+    Ligne de matrice qui contient le plus d'éléments nuls
+    */
 
     public int nullRow(int @NotNull [][] matrix) {
         int nullRow = 0;
@@ -113,6 +136,10 @@ public record MatricesOperation(Scanner scan) {
         return nullRow;
     }
 
+    /*
+    Matrice qui contient plus d'un élément nul
+    */
+
     public boolean containsMultipleNullElements(int @NotNull [][] matrix) {
         boolean containsMultipleNullElements = false;
 
@@ -131,6 +158,10 @@ public record MatricesOperation(Scanner scan) {
         }
         return containsMultipleNullElements;
     }
+
+    /*
+    Multiplication de deux matrices
+    */
 
     @Contract(pure = true)
     public int @NotNull [][] multiply(int @NotNull [][] matrix_1, int @NotNull [][] matrix_2) {
