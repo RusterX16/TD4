@@ -2,6 +2,7 @@ package dev.ruster.td4.ex;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -16,6 +17,7 @@ public record MagicSquare(Scanner scan) {
         System.out.println();
     }
 
+    /*
     public int @NotNull [][] magicSquare() {
         int n;
 
@@ -50,5 +52,46 @@ public record MagicSquare(Scanner scan) {
         }
 
         return array;
+    }
+    */
+
+    public int @NotNull [][] magicSquare() {
+        int n;
+
+        do {
+            System.out.print("Saisir n : ");
+            n = scan.nextInt();
+        } while(n < 0);
+
+        int[][] matrix = new int[n][n];
+        int last = matrix.length - 1;
+        int col = last / 2;
+        int row = 0;
+        int z = 1;
+
+        Arrays.stream(matrix).forEach(it -> Arrays.fill(it, 0));
+        matrix[row][col] = z;
+
+        while(z < Math.pow(matrix.length, 2)) {
+            if(row <= 0) {
+                row = last;
+            } else row--;
+            if(col >= last) {
+                col = 0;
+            } else col++;
+
+            if(matrix[row][col] != 0) {
+                col++;
+                continue;
+            }
+
+            System.out.println("row = " + row);
+            System.out.println("col = " + col);
+
+            z++;
+            matrix[row][col] = z;
+        }
+
+        return matrix;
     }
 }
