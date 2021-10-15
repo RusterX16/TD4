@@ -1,5 +1,6 @@
 package dev.ruster.td4.ex;
 
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -69,7 +70,6 @@ public record MagicSquare(Scanner scan) {
         int row = 0;
         int z = 1;
 
-        Arrays.stream(matrix).forEach(it -> Arrays.fill(it, 0));
         matrix[row][col] = z;
 
         while(z < Math.pow(matrix.length, 2)) {
@@ -85,7 +85,6 @@ public record MagicSquare(Scanner scan) {
             z++;
             matrix[row][col] = z;
         }
-
         return matrix;
     }
 }
